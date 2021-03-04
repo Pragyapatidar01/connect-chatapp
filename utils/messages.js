@@ -7,5 +7,4 @@ function formatMessage(username, text){
         time:moment().format('MMMM Do , h:mm a')
     };
 }
-
 module.exports = formatMessage;
