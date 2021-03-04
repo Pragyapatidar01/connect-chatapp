@@ -20,3 +20,4 @@ const msgSchema = new mongoose.Schema({
 
 const Msg = mongoose.model('msg', msgSchema);
 module.exports = Msg;
+   
