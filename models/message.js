@@ -1,0 +1,22 @@
+const mongoose = require('mongoose');
+const msgSchema = new mongoose.Schema({
+    msg:{
+        type:String,
+        required:true
+    },
+    username:{
+        type:String,
+        required:true
+    },
+    room:{ 
+        type:String,
+        required:true
+    },
+    time:{
+        type:String,
+        required:true
+    }
+})
+
+const Msg = mongoose.model('msg', msgSchema);
+module.exports = Msg;
