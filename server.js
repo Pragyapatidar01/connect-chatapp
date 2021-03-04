@@ -12,8 +12,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+mongodb = 'mongodb+srv://pragya_21:Prag_22@cluster0.aq9ng.mongodb.net/chatApp?retryWrites=true&w=majority'
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
+mongoose.connect(process.env.MONGODB_URI || mongodb, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
     console.log("connected");
 }).catch(err => console.log(err))
 
@@ -55,7 +56,7 @@ io.on('connection' , socket =>{
     //listen for chatMessage
     socket.on('chatMessage', msg =>{
         const user = getCurrentUser(socket.id);
-        
+        console.log(user);
         const formatMesg = formatMessage(user.username,msg)
         const message = new Msg({
             msg:msg,
