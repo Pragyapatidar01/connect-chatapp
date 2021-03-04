@@ -28,9 +28,9 @@ socket.on('output-messages', ({data,user}) => {
         data.forEach((message) =>{
             if(message.room == user.room )
             {
-                console.log("******************");
-                console.log(message.username);
-                console.log(user);
+//                 console.log("******************");
+//                 console.log(message.username);
+//                 console.log(user);
                 if(message.username === (user.username))
                 outputOnRefresh(message,'incoming');
                 else
