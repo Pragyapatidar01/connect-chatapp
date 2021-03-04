@@ -13,7 +13,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 
-mongoose.connect(process.env.MONGODB_URI || mongoDB, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
     console.log("connected");
 }).catch(err => console.log(err))
 
