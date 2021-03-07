@@ -12,7 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-mongodb = 'mongodb+srv://pragya_21:Prag_22@cluster0.aq9ng.mongodb.net/chatApp?retryWrites=true&w=majority'
+mongodb = '' //your mongodb atlas connection uri that looks like=> 'mongodb+srv://<username>:<password>@cluster0.aq9ng.mongodb.net/<appname>?retryWrites=true&w=majority'
 
 mongoose.connect(process.env.MONGODB_URI || mongodb, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
     console.log("connected");
