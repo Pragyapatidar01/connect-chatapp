@@ -1,8 +1,11 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const socketio = require('socket.io');
+const socketio = require('socket.io'); 
 const mongoose = require('mongoose');
+
+require('dotenv/config');
+
 const Msg = require('./models/message');
 const formatMessage = require('./utils/messages');
 const Users = require('./utils/users');
@@ -12,9 +15,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-mongodb = '' //your mongodb atlas connection uri that looks like=> 'mongodb+srv://<username>:<password>@cluster0.aq9ng.mongodb.net/<appname>?retryWrites=true&w=majority'
 
-mongoose.connect(process.env.MONGODB_URI || mongodb, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{ 
     console.log("connected");
 }).catch(err => console.log(err))
 
