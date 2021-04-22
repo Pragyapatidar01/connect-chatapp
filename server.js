@@ -1,8 +1,11 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const socketio = require('socket.io');
+const socketio = require('socket.io'); 
 const mongoose = require('mongoose');
+
+require('dotenv/config');
+
 const Msg = require('./models/message');
 const formatMessage = require('./utils/messages');
 const Users = require('./utils/users');
@@ -12,9 +15,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-mongodb = 'mongodb+srv://pragya_21:Prag_22@cluster0.aq9ng.mongodb.net/chatApp?retryWrites=true&w=majority'
 
-mongoose.connect(process.env.MONGODB_URI || mongodb, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true , useUnifiedTopology: true} ).then(()=>{ 
     console.log("connected");
 }).catch(err => console.log(err))
 
@@ -30,7 +33,6 @@ io.on('connection' , socket =>{
         const user = userJoin(socket.id, username, room);
 
         socket.join(user.room);
-
     
     //emit for single client
     // socket.emit('message',formatMessage(botName,'Welcome to Connection'));
@@ -97,10 +99,6 @@ io.on('connection' , socket =>{
     });
 });
 
-//setting app to production type on heroku
-if(process.env.NODE_ENV === 'production'){
-    
-}
 
 const PORT =process.env.PORT || 3000;
 

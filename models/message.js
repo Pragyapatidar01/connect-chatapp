@@ -8,7 +8,7 @@ const msgSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    room:{ 
+    room:{  
         type:String,
         required:true
     },
